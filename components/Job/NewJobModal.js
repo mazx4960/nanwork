@@ -14,9 +14,12 @@ import {
   Button,
   DialogActions,
   CircularProgress,
+  TextField,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Close } from "@mui/icons-material";
+import { DatePicker, LocalizationProvider } from "@mui/lab";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
 
 const useStyles = makeStyles((theme) => ({
   skillChip: {
@@ -41,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
 const initState = {
   name: "",
   type: "Volunteer",
-  phone: "",
+  email: "",
+  startDate: new Date(),
   timeDay: "",
   age: "",
   description: "",
@@ -53,7 +57,6 @@ const NewJobModal = (props) => {
   const [jobDetails, setJobDetails] = useState(initState);
 
   const handleChange = (e) => {
-    e.persist();
     setJobDetails((oldState) => ({
       ...oldState,
       [e.target.name]: e.target.value,
@@ -120,13 +123,26 @@ const NewJobModal = (props) => {
             <FilledInput
               onChange={handleChange}
               autoComplete="off"
-              placeholder="Phone*"
-              name="phone"
-              value={jobDetails.phone}
+              placeholder="email*"
+              name="email"
+              value={jobDetails.email}
               disableUnderline
               fullWidth
             />
           </Grid>
+          <Grid item xs={6}>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                label="Start Date"
+                name="startDate"
+                value={jobDetails.startDate}
+                onChange={handleChange}
+                renderInput={(params) => <TextField {...params} />}
+                fullWidth
+              />
+            </LocalizationProvider>
+          </Grid>
+
           <Grid item xs={6}>
             <FilledInput
               onChange={handleChange}

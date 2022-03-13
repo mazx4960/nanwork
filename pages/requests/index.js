@@ -22,7 +22,7 @@ const view = () => {
     const req = await db
       .collection("jobs")
       .orderBy("postedOn", "desc")
-      .where("postedBy", "==", AuthUser.uid)
+      .where("postedBy", "==", AuthUser.email)
       .get();
 
     const tempData = req.docs.map((job) => ({

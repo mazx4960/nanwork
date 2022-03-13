@@ -30,7 +30,6 @@ const SearchBar = (props) => {
   });
 
   const handleChange = (e) => {
-    e.persist();
     setJobSearch((oldState) => ({
       ...oldState,
       [e.target.name]: e.target.value,

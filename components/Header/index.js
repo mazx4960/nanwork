@@ -21,9 +21,8 @@ const Header = (props) => {
     await db.collection("jobs").add({
       ...jobDetails,
       postedOn: new Date(),
-      postedBy: AuthUser.uid,
+      postedBy: AuthUser.email,
     });
-    
   };
 
   return (
@@ -37,7 +36,7 @@ const Header = (props) => {
         <Grid container justifyContent="center">
           <Grid item xs={10}>
             <Box display="flex" justifyContent="space-between">
-              <Link href="/jobs/view">
+              <Link href="/jobs">
                 <Typography variant="h4">nanWorks</Typography>
               </Link>
               {AuthUser && (

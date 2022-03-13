@@ -40,7 +40,6 @@ const view = () => {
     const req = await db
       .collection("jobs")
       .orderBy("postedOn", "desc")
-      .where("location", "==", jobSearch.location)
       .where("type", "==", jobSearch.type)
       .get();
 
