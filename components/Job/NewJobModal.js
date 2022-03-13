@@ -20,6 +20,7 @@ import { makeStyles } from "@mui/styles";
 import { Close } from "@mui/icons-material";
 import { DatePicker, LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import Router from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   skillChip: {
@@ -84,6 +85,7 @@ const NewJobModal = (props) => {
     setLoading(true);
     await props.PostJob(jobDetails);
     closeModal();
+    Router.reload(window.location.pathname);
   };
 
   const closeModal = () => {
@@ -187,7 +189,7 @@ const NewJobModal = (props) => {
               disableUnderline
               fullWidth
               multiline
-              rows={4}
+              rows={1}
               name="title"
               value={jobDetails.title}
             />

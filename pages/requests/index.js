@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Grid, CircularProgress } from "@mui/material";
+import { Box, Grid, CircularProgress, Typography } from "@mui/material";
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
 import { db } from "../../utils/firebase/firestore/database";
@@ -57,10 +57,15 @@ const view = () => {
             ) : (
               <>
                 <Box my={2} display="flex" justifyContent="flex-start">
-                  My requests
+                  <Typography variant="h4" fontWeight="bold">My requests</Typography>
                 </Box>
                 {jobs.map((job) => (
-                  <JobCard buttonText="Delete" open={() => deleteJob(job.id)} key={job.id} {...job} />
+                  <JobCard
+                    buttonText="Delete"
+                    open={() => deleteJob(job.id)}
+                    key={job.id}
+                    {...job}
+                  />
                 ))}
               </>
             )}
