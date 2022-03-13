@@ -5,6 +5,7 @@ import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
 import Loader from "@/elements/Loader";
 import NewJobModal from "components/Job/NewJobModal";
+import { db } from "@/firebase/firestore/database";
 
 const Header = (props) => {
   //auth user object
@@ -22,7 +23,7 @@ const Header = (props) => {
       postedOn: new Date(),
       postedBy: AuthUser.uid,
     });
-    fetchJobs();
+    
   };
 
   return (

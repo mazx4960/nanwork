@@ -42,8 +42,7 @@ const JobCard = (props) => {
         <Grid item container direction="column" alignItems="flex-end" xs>
           <Grid item>
             <typography variant="caption">
-              {formatDistance(Date.now(), props.postedOn)} ago | {props.type} |{" "}
-              {props.location}
+              {formatDistance(Date.now(), props.postedOn)} ago | {props.type}
             </typography>
           </Grid>
           <Grid item>
