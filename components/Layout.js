@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
       <Box>{children}</Box>
       <Box display="flex" justifyContent="center" mt={3} mb={2}>
         <Typography variant="caption">
-          &copy; 2021 Nanwork. All Rights Reserved.
+          &copy; 2022 nanWork. All Rights Reserved.
         </Typography>
       </Box>
     </>

@@ -77,12 +77,6 @@ const ViewJobModal = (props) => {
             </Typography>
           </Box>
           <Box className={classes.info} display="flex">
-            <Typography variant="caption">Phone: </Typography>
-            <Typography variant="body2" size={20}>
-              {props.job.phone}
-            </Typography>
-          </Box>
-          <Box className={classes.info} display="flex">
             <Typography variant="caption">Time of the day: </Typography>
             <Typography variant="body2" size={20}>
               {props.job.timeDay}

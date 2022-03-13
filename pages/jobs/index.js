@@ -80,7 +80,7 @@ const view = () => {
                   </Box>
                 )}
                 {jobs.map((job) => (
-                  <JobCard open={() => setViewJob(job)} key={job.id} {...job} />
+                  <JobCard buttonText="View" open={() => setViewJob(job)} key={job.id} {...job} />
                 ))}
               </>
             )}

@@ -35,6 +35,11 @@ const view = () => {
     setLoading(false);
   };
 
+  const deleteJob = async (id) => {
+    await db.collection("jobs").doc(id).delete();
+    fetchJobs();
+  };
+
   useEffect(() => {
     fetchJobs();
   }, []);
@@ -55,7 +60,7 @@ const view = () => {
                   My requests
                 </Box>
                 {jobs.map((job) => (
-                  <JobCard open={() => setViewJob(job)} key={job.id} {...job} />
+                  <JobCard buttonText="Delete" open={() => deleteJob(job.id)} key={job.id} {...job} />
                 ))}
               </>
             )}

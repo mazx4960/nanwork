@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Link from 'next/link';
+import Link from "next/link";
 import { Box, Grid, Typography, Button, Stack } from "@mui/material";
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
@@ -37,7 +37,10 @@ const Header = (props) => {
           <Grid item xs={10}>
             <Box display="flex" justifyContent="space-between">
               <Link href="/jobs">
-                <Typography variant="h4">nanWorks</Typography>
+                <Button style={{ textTransform: "none" }}>
+                  <img src="/logo.png" alt="logo" width="50" height="50"/>
+                  <Typography variant="h4">nanWork</Typography>
+                </Button>
               </Link>
               {AuthUser && (
                 <Stack spacing={2} direction="row">

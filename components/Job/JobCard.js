@@ -53,7 +53,7 @@ const JobCard = (props) => {
           <Grid item>
             <Box mt={2}>
               <Button onClick={props.open} variant="outlined">
-                Check
+                {props.buttonText}
               </Button>
             </Box>
           </Grid>
