@@ -48,6 +48,7 @@ const initState = {
   startDate: new Date(),
   timeDay: "",
   age: "",
+  listingTitle: "",
   description: "",
 };
 
@@ -123,7 +124,8 @@ const NewJobModal = (props) => {
             <FilledInput
               onChange={handleChange}
               autoComplete="off"
-              placeholder="email*"
+              placeholder="Email*"
+              type="email"
               name="email"
               value={jobDetails.email}
               disableUnderline
@@ -161,8 +163,25 @@ const NewJobModal = (props) => {
               placeholder="Age of child*"
               disableUnderline
               fullWidth
+              type="number"
               name="age"
               value={jobDetails.age}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <FilledInput
+              onChange={handleChange}
+              autoComplete="off"
+              placeholder="Listing Title*"
+              disableUnderline
+              fullWidth
+              multiline
+              rows={4}
+              name="title"
+              value={jobDetails.title}
             />
           </Grid>
           <Grid item xs={12}>

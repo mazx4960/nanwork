@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography, Button } from "@mui/material";
+import { Box, Grid, Typography, Button, Divider, Stack } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { formatDistance } from "date-fns";
 
@@ -29,16 +29,21 @@ const JobCard = (props) => {
     <Box p={2} className={classes.wrapper}>
       <Grid container mb={2} alignItems="center">
         <Grid item xs>
-          <Typography variant="subtitle1">{props.name}</Typography>
-          <Typography className={classes.companyName} variant="subtitle1">
-            {props.description}
-          </Typography>
+          <Typography variant="h4">{props.title}</Typography>
+          <Typography variant="body1">{props.description}</Typography>
+          <Stack direction="row" spacing={2} mt={2}>
+            <Typography className={classes.companyName} variant="subtitle1">
+              Child Age: {props.age}
+            </Typography>
+            <Typography className={classes.companyName} variant="subtitle1">
+              Start Date: {props.startDate.toDate().toLocaleDateString("en-US")}
+            </Typography>
+            <Typography className={classes.companyName} variant="subtitle1">
+              Time: {props.timeDay}
+            </Typography>
+          </Stack>
         </Grid>
-        <Grid item container xs>
-          {/* {props.skills.map(skill => <Grid className={classes.skillChip}  key={skill}>
-                        {skill}
-                    </Grid>)} */}
-        </Grid>
+
         <Grid item container direction="column" alignItems="flex-end" xs>
           <Grid item>
             <typography variant="caption">

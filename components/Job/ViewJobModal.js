@@ -46,7 +46,7 @@ const ViewJobModal = (props) => {
     <Dialog open={!!Object.keys(props.job).length} fullWidth>
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          {props.job.title} @ {props.job.phone}
+          {props.job.name} @ {props.job.email}
           <IconButton onClick={props.closeModal}>
             <Close />
           </IconButton>
