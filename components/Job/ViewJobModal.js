@@ -10,10 +10,10 @@ import {
   DialogContent,
   Button,
   DialogActions,
-  makeStyles,
-} from "@material-ui/core";
-import { Close as CloseIcon } from "@material-ui/icons";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { format } from "date-fns";
+import { Close } from "@mui/icons-material";
 
 const useStyles = makeStyles((theme) => ({
   info: {
@@ -48,7 +48,7 @@ const ViewJobModal = (props) => {
         <Box display="flex" justifyContent="space-between" alignItems="center">
           {props.job.title} @ {props.job.companyName}
           <IconButton onClick={props.closeModal}>
-            <CloseIcon />
+            <Close />
           </IconButton>
         </Box>
       </DialogTitle>

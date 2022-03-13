@@ -13,10 +13,10 @@ import {
   DialogContent,
   Button,
   DialogActions,
-  makeStyles,
   CircularProgress,
-} from "@material-ui/core";
-import { Close as CloseIcon } from "@material-ui/icons";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { Close } from "@mui/icons-material";
 
 const useStyles = makeStyles((theme) => ({
   skillChip: {
@@ -87,7 +87,7 @@ const NewJobModal = (props) => {
         <Box display="flex" justifyContent="space-between" alignItems="center">
           Post a Job
           <IconButton onClick={closeModal}>
-            <CloseIcon />
+            <Close />
           </IconButton>
         </Box>
       </DialogTitle>

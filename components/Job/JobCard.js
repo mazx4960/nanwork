@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Grid, Typography, Button, makeStyles } from "@material-ui/core";
+import { Box, Grid, Typography, Button } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import { formatDistance } from "date-fns";
 
 const useStyles = makeStyles((theme) => ({

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Box, Grid, Typography, Button } from "@material-ui/core";
+import Link from 'next/link';
+import { Box, Grid, Typography, Button, Stack } from "@mui/material";
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
+
 import Loader from "@/elements/Loader";
 import NewJobModal from "components/Job/NewJobModal";
 
@@ -8,11 +10,17 @@ const Header = (props) => {
   //auth user object
   const AuthUser = useAuthUser();
 
+  //signout user
+  const handleLogout = () => AuthUser.signOut();
+
   const [openModal, setOpenModal] = useState(false); //State for the Apply Job Modal
 
   const PostJob = async (jobDetails) => {
+    console.log(jobDetails);
     await db.collection("jobs").add({
       ...jobDetails,
+      postedOn: new Date(),
+      postedBy: AuthUser.uid,
     });
     fetchJobs();
   };
@@ -28,15 +36,38 @@ const Header = (props) => {
         <Grid container justifyContent="center">
           <Grid item xs={10}>
             <Box display="flex" justifyContent="space-between">
-              <Typography variant="h4">nanWorks</Typography>
-              <Button
-                onClick={() => setOpenModal(true)}
-                variant="contained"
-                disabledElevation
-                color="primary"
-              >
-                Post a Job
-              </Button>
+              <Link href="/jobs/view">
+                <Typography variant="h4">nanWorks</Typography>
+              </Link>
+              {AuthUser && (
+                <Stack spacing={2} direction="row">
+                  <Button
+                    onClick={() => setOpenModal(true)}
+                    variant="contained"
+                    disabledElevation
+                    color="primary"
+                  >
+                    Post a Job
+                  </Button>
+                  <Link href="/requests">
+                    <Button
+                      variant="contained"
+                      disabledElevation
+                      color="primary"
+                    >
+                      My requests
+                    </Button>
+                  </Link>
+                  <Button
+                    onClick={handleLogout}
+                    variant="contained"
+                    disabledElevation
+                    color="primary"
+                  >
+                    Logout
+                  </Button>
+                </Stack>
+              )}
             </Box>
           </Grid>
         </Grid>

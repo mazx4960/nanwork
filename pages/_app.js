@@ -1,5 +1,5 @@
 import initAuth from "@/auth";
-import { ThemeProvider } from "@material-ui/core";
+import { ThemeProvider } from "@mui/material";
 
 import "../styles/globals.css";
 import theme from "../theme/theme";

@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Grid,
-  Button,
-  Typography,
-  CircularProgress,
-} from "@material-ui/core";
-import { Close as CloseIcon } from "@material-ui/icons";
+import { Box, Grid, Button, CircularProgress } from "@mui/material";
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
 import { db } from "../../utils/firebase/firestore/database";
@@ -15,6 +8,7 @@ import JobCard from "../../components/Job/JobCard";
 import ViewJobModal from "../../components/Job/ViewJobModal";
 import Loader from "@/elements/Loader";
 import Layout from "components/Layout";
+import { Close } from "@mui/icons-material";
 
 const view = () => {
   //auth user object
@@ -81,7 +75,7 @@ const view = () => {
                 {customSearch && (
                   <Box my={2} display="flex" justifyContent="flex-end">
                     <Button onClick={fetchJobs}>
-                      <CloseIcon size={20} />
+                      <Close size={20} />
                       Custom Search
                     </Button>
                   </Box>
