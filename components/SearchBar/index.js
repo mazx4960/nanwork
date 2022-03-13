@@ -26,8 +26,7 @@ const SearchBar = (props) => {
   const [loading, setLoading] = useState(false);
 
   const [jobSearch, setJobSearch] = useState({
-    type: "Full Time",
-    location: "Remote",
+    type: "Volunteer",
   });
 
   const handleChange = (e) => {
@@ -54,19 +53,10 @@ const SearchBar = (props) => {
         disableUnderline
         variant="filled"
       >
-        <MenuItem value="Full Time">Volunteer</MenuItem>
-        <MenuItem value="Part Time">Paid</MenuItem>
+        <MenuItem value="Volunteer">Volunteer</MenuItem>
+        <MenuItem value="Paid">Paid</MenuItem>
       </Select>
-      <Select
-        onChange={handleChange}
-        value={jobSearch.location}
-        name="location"
-        disableUnderline
-        variant="filled"
-      >
-        <MenuItem value="Remote">Remote</MenuItem>
-        <MenuItem value="In-office">In-office</MenuItem>
-      </Select>
+      
       <Button
         variant="contained"
         color="primary"

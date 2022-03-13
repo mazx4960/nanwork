@@ -39,12 +39,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const initState = {
-  title: "",
-  type: "Full Time",
-  companyName: "",
-  companyUrl: "",
-  location: "Remote",
-  link: "",
+  name: "",
+  type: "Volunteer",
+  phone: "",
+  timeDay: "",
+  age: "",
   description: "",
 };
 
@@ -97,9 +96,9 @@ const NewJobModal = (props) => {
             <FilledInput
               onChange={handleChange}
               autoComplete="off"
-              name="title"
-              value={jobDetails.title}
-              placeholder="Job Title*"
+              name="name"
+              value={jobDetails.name}
+              placeholder="Name*"
               disableUnderline
               fullWidth
             />
@@ -113,7 +112,7 @@ const NewJobModal = (props) => {
               name="type"
               value={jobDetails.type}
             >
-              <MenuItem value="Full Time">Volunteer</MenuItem>
+              <MenuItem value="Volunteer">Volunteer</MenuItem>
               <MenuItem value="Paid">Paid</MenuItem>
             </Select>
           </Grid>
@@ -121,9 +120,9 @@ const NewJobModal = (props) => {
             <FilledInput
               onChange={handleChange}
               autoComplete="off"
-              placeholder="Comapny Name*"
-              name="companyName"
-              value={jobDetails.companyName}
+              placeholder="Phone*"
+              name="phone"
+              value={jobDetails.phone}
               disableUnderline
               fullWidth
             />
@@ -132,35 +131,22 @@ const NewJobModal = (props) => {
             <FilledInput
               onChange={handleChange}
               autoComplete="off"
-              placeholder="Company URL*"
+              placeholder="Time of the day*"
               disableUnderline
               fullWidth
-              name="companyUrl"
-              value={jobDetails.companyUrl}
+              name="timeDay"
+              value={jobDetails.timeDay}
             />
-          </Grid>
-          <Grid item xs={6}>
-            <Select
-              onChange={handleChange}
-              fullWidth
-              disableUnderline
-              variant="filled"
-              name="location"
-              value={jobDetails.location}
-            >
-              <MenuItem value="Remote">Remote</MenuItem>
-              <MenuItem value="In-office">In-office</MenuItem>
-            </Select>
           </Grid>
           <Grid item xs={6}>
             <FilledInput
               onChange={handleChange}
               autoComplete="off"
-              placeholder="Job Link with https*"
+              placeholder="Age of child*"
               disableUnderline
               fullWidth
-              name="link"
-              value={jobDetails.link}
+              name="age"
+              value={jobDetails.age}
             />
           </Grid>
           <Grid item xs={12}>

@@ -3,6 +3,7 @@ import { Box, Grid, Typography, Button } from "@material-ui/core";
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 import Loader from "@/elements/Loader";
 import NewJobModal from "components/Job/NewJobModal";
+import { db } from "@/firebase/firestore/database";
 
 const Header = (props) => {
   //auth user object
@@ -14,7 +15,7 @@ const Header = (props) => {
     await db.collection("jobs").add({
       ...jobDetails,
     });
-    fetchJobs();
+    
   };
 
   return (

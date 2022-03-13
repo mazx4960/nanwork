@@ -46,7 +46,7 @@ const ViewJobModal = (props) => {
     <Dialog open={!!Object.keys(props.job).length} fullWidth>
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          {props.job.title} @ {props.job.companyName}
+          {props.job.title} @ {props.job.phone}
           <IconButton onClick={props.closeModal}>
             <CloseIcon />
           </IconButton>
@@ -69,12 +69,7 @@ const ViewJobModal = (props) => {
               {props.job.type}
             </Typography>
           </Box>
-          <Box className={classes.info} display="flex">
-            <Typography variant="caption">Work Type: </Typography>
-            <Typography variant="body2" size={20}>
-              {props.job.location}
-            </Typography>
-          </Box>
+
           <Box className={classes.info} display="flex">
             <Typography variant="caption">Description: </Typography>
             <Typography variant="body2" size={20}>
@@ -82,15 +77,21 @@ const ViewJobModal = (props) => {
             </Typography>
           </Box>
           <Box className={classes.info} display="flex">
-            <Typography variant="caption">Comapny Name: </Typography>
+            <Typography variant="caption">Phone: </Typography>
             <Typography variant="body2" size={20}>
-              {props.job.companyName}
+              {props.job.phone}
             </Typography>
           </Box>
           <Box className={classes.info} display="flex">
-            <Typography variant="caption">Comapny Website : </Typography>
+            <Typography variant="caption">Time of the day: </Typography>
             <Typography variant="body2" size={20}>
-              {props.job.companyUrl}
+              {props.job.timeDay}
+            </Typography>
+          </Box>
+          <Box className={classes.info} display="flex">
+            <Typography variant="caption">Age of child: </Typography>
+            <Typography variant="body2" size={20}>
+              {props.job.age}
             </Typography>
           </Box>
           <Box className={classes.info}>
@@ -105,18 +106,6 @@ const ViewJobModal = (props) => {
           </Box>
         </Box>
       </DialogContent>
-      <DialogActions>
-        <Button
-          className={classes.included}
-          variant="outlined"
-          component="a"
-          rel={"external"}
-          href={props.job.link}
-          target="_blank"
-        >
-          Apply
-        </Button>
-      </DialogActions>
     </Dialog>
   );
 };
