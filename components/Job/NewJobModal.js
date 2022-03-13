@@ -56,6 +56,7 @@ const NewJobModal = (props) => {
   const [loading, setLoading] = useState(false);
 
   const [jobDetails, setJobDetails] = useState(initState);
+  const [startDate, setStartDate] = useState(new Date());
 
   const handleChange = (e) => {
     setJobDetails((oldState) => ({
@@ -64,13 +65,21 @@ const NewJobModal = (props) => {
     }));
   };
 
+  const handleDateChange = (date) => {
+    setStartDate(date);
+    setJobDetails((oldState) => ({
+      ...oldState,
+      startDate: date,
+    }));
+  };
+
   const handleSubmit = async () => {
-    for (const field in jobDetails) {
-      if (typeof jobDetails[field] === "string" && !jobDetails[field]) {
-        alert("Fill all the Required Fileds");
-        return;
-      }
-    }
+    // for (const field in jobDetails) {
+    //   if (!jobDetails[field]) {
+    //     alert("Fill all the Required Fileds");
+    //     return;
+    //   }
+    // }
 
     setLoading(true);
     await props.PostJob(jobDetails);
@@ -138,13 +147,12 @@ const NewJobModal = (props) => {
                 label="Start Date"
                 name="startDate"
                 value={jobDetails.startDate}
-                onChange={handleChange}
+                onChange={handleDateChange}
                 renderInput={(params) => <TextField {...params} />}
                 fullWidth
               />
             </LocalizationProvider>
           </Grid>
-
           <Grid item xs={6}>
             <FilledInput
               onChange={handleChange}
