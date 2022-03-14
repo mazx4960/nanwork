@@ -3,13 +3,12 @@ import { Box, Grid, CircularProgress, Typography } from "@mui/material";
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
 import { db } from "../../utils/firebase/firestore/database";
-import SearchBar from "../../components/SearchBar";
 import JobCard from "../../components/Job/JobCard";
 import ViewJobModal from "../../components/Job/ViewJobModal";
 import Loader from "@/elements/Loader";
 import Layout from "components/Layout";
 
-const view = () => {
+const Requests = () => {
   //auth user object
   const AuthUser = useAuthUser();
 
@@ -42,7 +41,7 @@ const view = () => {
 
   useEffect(() => {
     fetchJobs();
-  }, []);
+  });
 
   return (
     <Layout>
@@ -57,12 +56,18 @@ const view = () => {
             ) : (
               <>
                 <Box my={2} display="flex" justifyContent="flex-start">
-                  <Typography variant="h4" fontWeight="bold">My requests</Typography>
+                  <Typography variant="h4" fontWeight="bold">
+                    My requests
+                  </Typography>
                 </Box>
                 {jobs.map((job) => (
                   <JobCard
                     buttonText="Delete"
-                    open={() => deleteJob(job.id)}
+                    onView={() => setViewJob(job)}
+                    onAction={(e) => {
+                      e.stopPropagation();
+                      deleteJob(job.id);
+                    }}
                     key={job.id}
                     {...job}
                   />
@@ -81,4 +86,4 @@ export default withAuthUser({
   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
   LoaderComponent: Loader,
   authPageURL: "/login",
-})(view);
+})(Requests);

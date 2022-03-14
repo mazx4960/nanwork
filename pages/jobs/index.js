@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, Grid, Button, CircularProgress } from "@mui/material";
-import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
+import { withAuthUser, AuthAction } from "next-firebase-auth";
 
 import { db } from "../../utils/firebase/firestore/database";
 import SearchBar from "../../components/SearchBar";
@@ -10,10 +10,7 @@ import Loader from "@/elements/Loader";
 import Layout from "components/Layout";
 import { Close } from "@mui/icons-material";
 
-const view = () => {
-  //auth user object
-  const AuthUser = useAuthUser();
-
+const Jobs = () => {
   const [jobs, setJobs] = useState([]); //State to save data of jobs from firebase
   const [loading, setLoading] = useState(true); //state for the loader of the data
   const [customSearch, setCustomSearch] = useState(false); //State for the custom Search or Filter
@@ -80,7 +77,15 @@ const view = () => {
                   </Box>
                 )}
                 {jobs.map((job) => (
-                  <JobCard buttonText="View" open={() => setViewJob(job)} key={job.id} {...job} />
+                  <JobCard
+                    buttonText="Apply"
+                    onView={() => setViewJob(job)}
+                    onAction={(e) => {
+                      e.stopPropagation();
+                    }}
+                    key={job.id}
+                    {...job}
+                  />
                 ))}
               </>
             )}
@@ -96,4 +101,4 @@ export default withAuthUser({
   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
   LoaderComponent: Loader,
   authPageURL: "/login",
-})(view);
+})(Jobs);

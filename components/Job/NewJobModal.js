@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import {
   Box,
   Grid,
@@ -16,31 +15,10 @@ import {
   CircularProgress,
   TextField,
 } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import { Close } from "@mui/icons-material";
 import { DatePicker, LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import Router from "next/router";
-
-const useStyles = makeStyles((theme) => ({
-  skillChip: {
-    margin: theme.spacing(0.5),
-    padding: theme.spacing(0.75),
-    fontSize: "14.5px",
-    borderRadius: "5px",
-    cursor: "pointer",
-    fontWeight: 600,
-    border: `1px solid ${theme.palette.secondary.main}`,
-    "&:hover": {
-      backgroundColor: theme.palette.secondary.main,
-      color: "#fff",
-    },
-  },
-  included: {
-    backgroundColor: theme.palette.secondary.main,
-    color: "#fff",
-  },
-}));
 
 const initState = {
   name: "",
@@ -70,7 +48,7 @@ const NewJobModal = (props) => {
     setStartDate(date);
     setJobDetails((oldState) => ({
       ...oldState,
-      startDate: date,
+      startDate: startDate,
     }));
   };
 
@@ -94,9 +72,8 @@ const NewJobModal = (props) => {
     props.closeJobModal();
   };
 
-  const classes = useStyles();
   return (
-    <Dialog open={props.openModal} fullWidth>
+    <Dialog open={props.openModal} onClose={props.closeModal} fullWidth>
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           Post a Job

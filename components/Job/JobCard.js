@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
       borderLeft: "6px solid #4064E4",
     },
   },
-  companyName: {
+  attribute: {
     fontSize: "13.5px",
     backgroundColor: theme.palette.primary.main,
     padding: theme.spacing(0.75),
@@ -26,19 +26,19 @@ const useStyles = makeStyles((theme) => ({
 const JobCard = (props) => {
   const classes = useStyles();
   return (
-    <Box p={2} className={classes.wrapper}>
+    <Box p={2} className={classes.wrapper} onClick={props.onView}>
       <Grid container mb={2} alignItems="center">
         <Grid item xs>
           <Typography variant="h4">{props.title}</Typography>
           <Typography variant="body1">{props.description}</Typography>
           <Stack direction="row" spacing={2} mt={2}>
-            <Typography className={classes.companyName} variant="subtitle1">
+            <Typography className={classes.attribute} variant="subtitle1">
               Child Age: {props.age}
             </Typography>
-            <Typography className={classes.companyName} variant="subtitle1">
+            <Typography className={classes.attribute} variant="subtitle1">
               Start Date: {props.startDate.toDate().toLocaleDateString("en-US")}
             </Typography>
-            <Typography className={classes.companyName} variant="subtitle1">
+            <Typography className={classes.attribute} variant="subtitle1">
               Time: {props.timeDay}
             </Typography>
           </Stack>
@@ -52,7 +52,7 @@ const JobCard = (props) => {
           </Grid>
           <Grid item>
             <Box mt={2}>
-              <Button onClick={props.open} variant="outlined">
+              <Button onClick={props.onAction} variant="outlined">
                 {props.buttonText}
               </Button>
             </Box>

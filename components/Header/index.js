@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Box, Grid, Typography, Button, Stack } from "@mui/material";
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
+import { Lock } from "@mui/icons-material";
 
 import Loader from "@/elements/Loader";
 import NewJobModal from "components/Job/NewJobModal";
@@ -36,14 +38,14 @@ const Header = (props) => {
         <Grid container justifyContent="center">
           <Grid item xs={10}>
             <Box display="flex" justifyContent="space-between">
-              <Link href="/jobs">
+              <Link href="/jobs" passHref>
                 <Button style={{ textTransform: "none" }}>
-                  <img src="/logo.png" alt="logo" width="50" height="50"/>
+                  <Image src="/logo.png" alt="logo" width="50" height="50"/>
                   <Typography variant="h4">nanWork</Typography>
                 </Button>
               </Link>
               {AuthUser && (
-                <Stack spacing={2} direction="row">
+                <Stack spacing={2} direction="row" maxHeight={40}>
                   <Button
                     onClick={() => setOpenModal(true)}
                     variant="contained"
@@ -52,7 +54,7 @@ const Header = (props) => {
                   >
                     Post a Job
                   </Button>
-                  <Link href="/requests">
+                  <Link href="/requests" passHref>
                     <Button
                       variant="contained"
                       disabledElevation
@@ -63,9 +65,10 @@ const Header = (props) => {
                   </Link>
                   <Button
                     onClick={handleLogout}
-                    variant="contained"
+                    variant="outlined"
                     disabledElevation
                     color="primary"
+                    startIcon={<Lock/>}
                   >
                     Logout
                   </Button>
