@@ -41,7 +41,7 @@ const Requests = () => {
 
   useEffect(() => {
     fetchJobs();
-  });
+  }, []);
 
   return (
     <Layout>
